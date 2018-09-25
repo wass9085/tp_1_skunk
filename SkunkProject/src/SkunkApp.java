@@ -9,6 +9,7 @@ public class SkunkApp
 	{
 		
 		StdOut.println("Welcome to 635 Skunk!");
+		
 
 	}
 
