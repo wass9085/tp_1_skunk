@@ -8,7 +8,7 @@ public class SkunkApp
 	public static void main(String[] args) 
 	{
 		
-		StdOut.println("Welcome to 635 Skunk!");
+		StdOut.println("Welcome to 635 Skunk project!");
 		
 
 	}
