@@ -4,6 +4,8 @@ public class Die
 	private int lastRoll;
 	private boolean predictable = false;
 	private int[] rolls;
+	private int index_of_last_roll = 0;
+	
 
 	public Die()
 	{
@@ -31,7 +33,11 @@ public class Die
 		
 		else 
 		{
-			this.lastRoll = this.rolls[0];
+			this.lastRoll = this.rolls[index_of_last_roll];
+			index_of_last_roll++;
+			if(index_of_last_roll>=this.rolls.length) {
+				index_of_last_roll=0;
+			}
 		}
 	}
 	
