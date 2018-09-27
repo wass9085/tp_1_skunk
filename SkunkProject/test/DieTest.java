@@ -5,11 +5,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DieTest {
+	
+	private Die die;
 
 	@Before
 	public void setUp() throws Exception 
 	{
-		
+		int[] int_values = new int[] {3,2,1};
+		die = new Die(int_values);
 	}
 
 	@After
@@ -21,8 +24,6 @@ public class DieTest {
 	@Test
 	public void test_initialization_0f_predictable_die() 
 	{
-		int[] int_values = new int[] {3,2,1};
-		Die die = new Die(int_values);
 		die.roll();
 		int value = die.getLastRoll();
 		assertEquals("assert not equals 3",3,value);
@@ -31,7 +32,6 @@ public class DieTest {
 	@Test
 	public void test_roll_2_of_predictable_die()
 	{
-		Die die = new Die(new int[] {3,2,1});
 		die.roll();
 		assertEquals("first not equals 3",3,die.getLastRoll());
 		die.roll();
@@ -43,7 +43,7 @@ public class DieTest {
 	@Test
 	public void test_roll_3_of_predictable_die()
 	{
-		Die die = new Die(new int[] {3,2,1});
+		
 		die.roll();
 		die.roll();
 		die.roll();
@@ -53,16 +53,37 @@ public class DieTest {
 	}
 	
 	@Test
-	public void test_roll_4_of_predictable_die()
+	public void test_roll_4_of_predictable_die_with_3_rolls()
 	{
-		Die die = new Die(new int[] {3,2,1});
+		
 		die.roll();
 		die.roll();
 		die.roll();
 		die.roll();
-		assertEquals("fourth value not wrapping back to first value",3,die.getLastRoll());
+		assertEquals("fourth value not wrapping back to first value 3",3,die.getLastRoll());
 			
 		
+	}
+	
+	@Test
+	public void test_roll_5_of_predictable_die_with_3_rolls()
+	{
+		
+		die.roll();
+		die.roll();
+		die.roll();
+		die.roll();
+		die.roll();
+		assertEquals("fourth value not wrapping back to first value 3",2,die.getLastRoll());
+			
+		
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void test_initial_int_array() 
+	{
+		Die die = new Die(null);
+		die.roll();
 	}
 
 }
